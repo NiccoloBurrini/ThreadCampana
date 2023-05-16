@@ -2,21 +2,21 @@ import java.util.ArrayList;
 
 public class Campana {
 
-    private static ArrayList<note> notes = new ArrayList<note>();
+    private static ArrayList<String> notes = new ArrayList<>();
     private static int suonoCorrente = 0;
 
     public Campana() {
-        notes.add(note.DIN);
-        notes.add(note.DON);
-        notes.add(note.DAN);
+        notes.add("DIN");
+        notes.add("DON");
+        notes.add("DAN");
     }
 
-    public synchronized void emettiSuono(note suono) throws Exception {
+    public synchronized void emettiSuono(String suono) throws Exception {
         try {
-            while (suono != notes.get(suonoCorrente)) {
+            while (!suono.equals(notes.get(suonoCorrente))) {
                 wait();
             }
-        } catch (Exception ignored) {
+        } catch (Exception e) {
         }
         System.out.println(notes.get(suonoCorrente));
         if (suonoCorrente == 2)
@@ -26,10 +26,4 @@ public class Campana {
         notifyAll();
     }
 
-}
-
-enum note {
-    DIN,
-    DON,
-    DAN
 }

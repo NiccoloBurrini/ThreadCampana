@@ -1,15 +1,15 @@
 public class ThreadSuono extends Thread {
 
     Campana campana;
-    note suono;
+    String suono;
 
-    public ThreadSuono(Campana c, note s) {
+    public ThreadSuono(Campana c, String s) {
         this.campana = c;
         this.suono = s;
 
     }
 
-    public note getSuono() {
+    public String getSuono() {
         return suono;
     }
 
